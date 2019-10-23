@@ -1,2 +1,2 @@
-# helpers
-helper functions to automate processing
+# param grid
+get parametres dictionery from class instance
