@@ -11,8 +11,8 @@ sudo a2enmod rewrite  #enable mod rewrite
 sudo a2enmod rewrite
 
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www.visanpy.com$
-RewriteRule (.*) http://visanpy.com$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www.domain.com$
+RewriteRule (.*) http://domain.com$1 [R=301,L]
 
 
 ## Apache 000-default.conf:
