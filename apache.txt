@@ -1,6 +1,18 @@
 #apache2
 apt install apache2 libapache2-mod-wsgi-py3  #installation
 service apache2 restart  #restart service
+sudo a2enmod rewrite  #enable mod rewrite
+
+
+
+#Apache permanent redirection
+
+#Command 
+sudo a2enmod rewrite
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.visanpy.com$
+RewriteRule (.*) http://visanpy.com$1 [R=301,L]
 
 
 ## Apache 000-default.conf:
