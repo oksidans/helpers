@@ -1,0 +1,40 @@
+## MySQL:
+
+apt install mysql-server  #mysql installation
+mysql_secure_installation ### Yes for all prompts
+
+#mysql-python ass
+apt install python3-dev  
+apt install libmysqlclient-dev
+pip install mysqlclient
+systemctl restart mysql
+
+
+
+
+
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE tutorial;
+GRANT ALL PRIVILEGES ON tutorial.* to 'username'@'localhost';
+FLUSH PRIVILEGES;
+
+## /tutorial/auth/mysql.cnf
+[client]
+database = 'tutorial'
+user = 'username'
+password = 'password'
+default-character-set = 'utf8'
+
+## Django Databases Constant:
+
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'OPTIONS': {
+'read_default_file': '/tutorial/auth/mysql.cnf',
+},
+}
+}
+
+
+

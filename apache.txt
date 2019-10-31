@@ -1,0 +1,31 @@
+#apache2
+apt install apache2 libapache2-mod-wsgi-py3  #installation
+service apache2 restart  #restart service
+
+
+## Apache 000-default.conf:
+
+<VirtualHost *:80>
+
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/html
+
+ErrorLog /tutorial/site/logs/error.log
+CustomLog /tutorial/site/access.log combine
+
+alias /static /tutorial/site/public/static
+<Directory /tutorial/site/public/static>
+Require all granted
+</Directory>
+
+<Directory /tutorial/django/tutorial/tutorial>
+<Files wsgi.py>
+Require all granted
+</Files>
+</Directory>
+
+WSGIDaemonProcess tutorial python-path=/tutorial/django/tutorial python-home=/tutorial/venv
+WSGIProcessGroup tutorial
+WSGIScriptAlias / /tutorial/django/tutorial/tutorial/wsgi.py
+
+</VirtualHost>
